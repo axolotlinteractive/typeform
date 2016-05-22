@@ -13,7 +13,7 @@ class Choice
     /**
      * @var string the label of this choice
      */
-    public $label;
+    private $label;
 
     /**
      * Choice constructor.
@@ -22,4 +22,17 @@ class Choice
     public function __construct($label) {
         $this->label = $label;
     }
+
+    /**
+     * Used to properly turn this into an array
+     *
+     * @return array
+     */
+    public function toArray() {
+        return [
+            "label" => $this->label
+        ];
+    }
+
+
 }

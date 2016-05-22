@@ -15,27 +15,27 @@ class Field
     /**
      * @var string the type for this field
      */
-    public $type;
+    private $type;
 
     /**
      * @var string the question text
      */
-    public $question;
+    private $question;
 
     /**
      * @var string the description for this field
      */
-    public $description = '';
+    private $description = null;
 
     /**
      * @var bool whether or not this field is required
      */
-    public $required = false;
+    private $required = false;
 
     /**
      * @var string|null An internal reference to this field
      */
-    public $ref;
+    private $ref;
 
     /**
      * Field constructor.
@@ -66,6 +66,28 @@ class Field
             $data["ref"] = $this->ref;
 
         return $data;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description) {
+        $this->description = $description;
+    }
+
+    /**
+     * @param boolean $required
+     * @return Field
+     */
+    public function setRequired($required) {
+        $this->required = $required;
+    }
+
+    /**
+     * @param null|string $ref
+     */
+    public function setRef($ref) {
+        $this->ref = $ref;
     }
 
 }
