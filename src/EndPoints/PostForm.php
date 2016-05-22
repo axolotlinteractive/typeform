@@ -78,7 +78,7 @@ class PostForm extends TypeFormEndPoint
     /**
      * @param Field $field
      */
-    public function addFields(Field $field) {
+    public function addField(Field $field) {
         $this->fields[] = $field;
     }
 
