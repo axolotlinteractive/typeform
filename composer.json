@@ -1,0 +1,15 @@
+{
+  "name" : "axolotlinteractive/typeform",
+  "description": "PHP Library for accessing the new Type Form API.",
+  "keywords": ["type-form"],
+  "license": "MIT",
+  "type": "library",
+  "require": {
+    "guzzlehttp/guzzle": "~6.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "AxolotlInteractive\\TypeForm\\": "src/"
+    }
+  }
+}
