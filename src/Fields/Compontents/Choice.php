@@ -1,4 +1,5 @@
 <?php
+namespace AxolotlInteractive\TypeForm\Fields\Components;
 
 /**
  * Created by PhpStorm.
