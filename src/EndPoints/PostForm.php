@@ -12,6 +12,7 @@ namespace AxolotlInteractive\TypeForm\EndPoints;
 use AxolotlInteractive\TypeForm\Fields\Field;
 use AxolotlInteractive\TypeForm\TypeFormClient;
 use AxolotlInteractive\TypeForm\TypeFormEndPoint;
+use Exception;
 
 class PostForm extends TypeFormEndPoint
 {
@@ -60,5 +61,25 @@ class PostForm extends TypeFormEndPoint
      */
     protected function getParams() {
         return (array) $this;
+    }
+
+    /**
+     * Use this to retrieve the url for the render url of a form
+     *
+     * @return string|bool The url to render the form or null if it is not found
+     * @throws Exception If the form was not executed yet
+     */
+    public function getFormRenderUrl() {
+        if (!$this->executed)
+            throw new Exception("Please execute the end point before attempting to get the form rendering url");
+
+        $links = $this->responseData->_links;
+
+        foreach ($links as $link) {
+            if ($link->rel == "form_render")
+                return $link->href;
+        }
+
+        return false;
     }
 }
