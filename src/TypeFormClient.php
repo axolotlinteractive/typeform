@@ -53,8 +53,7 @@ class TypeFormClient
      * @param string $apiKey The api key for type form
      * @throws Exception If an incorrect version was passed in
      */
-    public function __construct($apiVersion, $apiKey)
-    {
+    public function __construct($apiVersion, $apiKey) {
         if (!in_array($apiVersion, [0.4]))
             throw new Exception("Type Form api version $apiVersion is not currently supported");
 
@@ -75,7 +74,7 @@ class TypeFormClient
      * @param string $method the method we are running
      * @param string $endPoint The end point requested
      * @param array $params An array of params for this
-     * @return stdClass The response from the server
+     * @return ResponseInterface The response from the server
      * @throws Exception If the status code on the response is 403 or the method is not valid
      */
     public function sendEndPoint($method, $endPoint, array $params = []) {
@@ -99,10 +98,8 @@ class TypeFormClient
         if ($response->getStatusCode() == 403)
             throw new Exception('The supplied API key is not a valid Type Form API Key.');
 
-        $body = $response->getBody();
-        $responseData = json_decode($body, true);
 
-        return $responseData;
+        return $response;
     }
 
 }
