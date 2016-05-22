@@ -49,7 +49,7 @@ class PostForm extends TypeFormEndPoint
      */
     public function __construct($title) {
 
-        parent::__construct(TypeFormClient::METHOD_POST, "/forms/", 201);
+        parent::__construct(TypeFormClient::METHOD_POST, "forms", 201);
 
         $this->title = $title;
     }

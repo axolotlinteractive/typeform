@@ -58,7 +58,7 @@ class TypeFormClient
             throw new Exception("Type Form api version $apiVersion is not currently supported");
 
         $options = [
-            "base_uri" => $this->baseURL . $apiVersion,
+            "base_uri" => $this->baseURL . $apiVersion . '/',
             "headers" => [
                 "X-API-TOKEN" => $apiKey
             ]
