@@ -72,7 +72,7 @@ class MultipleChoice extends Field
     /**
      * @param Choice $choice
      */
-    public function addChoices($choice) {
+    public function addChoice($choice) {
         $this->choices[] = $choice;
     }
 
