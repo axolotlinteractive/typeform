@@ -60,7 +60,22 @@ class PostForm extends TypeFormEndPoint
      * @return array
      */
     protected function getParams() {
-        return (array) $this;
+        $params = [
+            "title" => $this->title,
+            "fields" => [],
+            "webhook_submit_url" => $this->webhook_submit_url,
+            "branding" => $this->branding
+        ];
+
+        foreach ($this->fields as $field) {
+            $params["fields"][] = $field->toArray();
+        }
+
+        if (count($this->tags))
+            $params["tags"] = $this->tags;
+
+
+        return $params;
     }
 
     /**

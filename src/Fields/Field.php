@@ -25,7 +25,7 @@ class Field
     /**
      * @var string the description for this field
      */
-    public $description = null;
+    public $description = '';
 
     /**
      * @var bool whether or not this field is required
@@ -46,6 +46,26 @@ class Field
 
         $this->type = $type;
         $this->question = $question;
+    }
+
+    /**
+     * Transforms this field into an array
+     *
+     * @return array
+     */
+    public function toArray() {
+        $data = [
+            "type" => $this->type,
+            "question" => $this->question,
+            "required" => $this->required
+        ];
+
+        if ($this->description)
+            $data["description"] = $this->description;
+        if ($this->ref)
+            $data["ref"] = $this->ref;
+
+        return $data;
     }
 
 }

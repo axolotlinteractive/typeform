@@ -9,7 +9,7 @@
 namespace AxolotlInteractive\TypeForm\Fields;
 
 
-use Choice;
+use AxolotlInteractive\TypeForm\Fields\Components\Choice;
 
 class MultipleChoice extends Field
 {
@@ -45,5 +45,23 @@ class MultipleChoice extends Field
      */
     public function __construct($question) {
         parent::__construct('multiple_choice', $question);
+    }
+
+    /**
+     * Transforms this field into an array
+     *
+     * @return array
+     */
+    public function toArray() {
+
+        $data = parent::toArray();
+
+        $data["choices"] = $this->choices;
+        $data["allow_multiple_selections"] = $this->allow_multiple_selections;
+        $data["randomize"] = $this->randomize;
+        $data["vertical_alignment"] = $this->vertical_alignment;
+        $data["add_other_choice"] = $this->add_other_choice;
+
+        return $data;
     }
 }
