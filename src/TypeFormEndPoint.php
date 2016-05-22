@@ -31,6 +31,16 @@ abstract class TypeFormEndPoint
     private $successCode;
 
     /**
+     * @var object the response from the server
+     */
+    protected $responseData = null;
+
+    /**
+     * @var bool whether or not this end point has been executed
+     */
+    protected $executed = false;
+
+    /**
      * TypeFormEndPoint constructor.
      * @param string $method The method for this end point
      * @param string $endPointUrl The base url for this end point e.g. /forms/
@@ -59,7 +69,8 @@ abstract class TypeFormEndPoint
             throw new Exception($json ? $json->message : "Unknown error with typeform API");
         }
 
-        return $json;
+        $this->responseData = $json;
+        $this->executed = true;
     }
 
 
