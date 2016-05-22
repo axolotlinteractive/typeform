@@ -20,27 +20,27 @@ class PostForm extends TypeFormEndPoint
     /**
      * @var string the title of this form
      */
-    public $title;
+    private $title;
 
     /**
      * @var Field[] all fields for this form
      */
-    public $fields = [];
+    private $fields = [];
 
     /**
      * @var array all tags for this form
      */
-    public $tags = [];
+    private $tags = [];
 
     /**
      * @var string the url for the web hook to process this form
      */
-    public $webhook_submit_url = null;
+    private $webhook_submit_url = null;
 
     /**
      * @var bool whether or not the typeform branding should be disabled
      */
-    public $branding = true;
+    private $branding = true;
 
 
     /**
@@ -52,6 +52,34 @@ class PostForm extends TypeFormEndPoint
         parent::__construct(TypeFormClient::METHOD_POST, "forms", 201);
 
         $this->title = $title;
+    }
+
+    /**
+     * @param string $webhook_submit_url
+     */
+    public function setWebhookSubmitUrl($webhook_submit_url) {
+        $this->webhook_submit_url = $webhook_submit_url;
+    }
+
+    /**
+     * @param boolean $branding
+     */
+    public function setBranding($branding) {
+        $this->branding = $branding;
+    }
+
+    /**
+     * @param string $tag
+     */
+    public function addTag($tag) {
+        $this->tags[] = $tag;
+    }
+
+    /**
+     * @param Field $field
+     */
+    public function addFields(Field $field) {
+        $this->fields[] = $field;
     }
 
     /**
